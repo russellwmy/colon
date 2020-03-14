@@ -1,6 +1,6 @@
 extern crate test;
 
-pub fn flatten<T: Clone>(v: Vec<Vec<T>>) -> Vec<T> {
+pub fn flatten<T>(v: Vec<Vec<T>>) -> Vec<T> {
   v.into_iter().flatten().collect()
 }
 
