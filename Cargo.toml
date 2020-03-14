@@ -1,0 +1,8 @@
+[package]
+name = "Colon"
+version = "0.1.0"
+authors = ["Russell Wong"]
+edition = "2018"
+
+[dependencies.num-traits]
+version = "0.2.11"
