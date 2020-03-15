@@ -1,5 +1,5 @@
 [package]
-name = "Colon"
+name = "colon"
 version = "0.1.0"
 authors = ["Russell Wong"]
 edition = "2018"
