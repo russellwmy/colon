@@ -3,6 +3,8 @@ name = "colon"
 version = "0.1.0"
 authors = ["Russell Wong"]
 edition = "2018"
+description = "A array and number utility functions"
+license = "MIT"
 
 [dependencies.num-traits]
 version = "0.2.11"
