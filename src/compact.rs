@@ -15,12 +15,16 @@ mod tests {
   #[test]
   fn it_works() {
     // test with 10 items
-    assert_eq!(compact::<i32>((1..10).map(|_| None).collect()).len(), 0);
+    let v: Vec<Option<i32>> = (1..10).map(|_| None).collect();
+
+    assert_eq!(compact(v).len(), 0);
   }
 
   #[bench]
-  fn bench_compat(b: &mut Bencher) {
+  fn bench_compact(b: &mut Bencher) {
     // benchmark with 10 items
-    b.iter(|| compact::<i32>((1..10).map(|_| None).collect()));
+    let v: Vec<Option<i32>> = (1..10).map(|_| None).collect();
+
+    b.iter(|| compact(v.clone()));
   }
 }

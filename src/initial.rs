@@ -12,16 +12,17 @@ mod tests {
 
   #[test]
   fn it_works() {
-    assert_eq!(
-      // test with 10 items
-      initial(vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10]),
-      vec![1, 2, 3, 4, 5, 6, 7, 8, 9]
-    );
+    // test with 10 items
+    let v = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+    assert_eq!(initial(v), vec![1, 2, 3, 4, 5, 6, 7, 8, 9]);
   }
 
   #[bench]
   fn bench_initial(b: &mut Bencher) {
     // benchmark with 10 items
-    b.iter(|| initial(vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10]));
+    let v = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+    b.iter(|| initial(v.clone()));
   }
 }

@@ -11,16 +11,16 @@ mod tests {
 
   #[test]
   fn it_works() {
-    assert_eq!(
-      // test with 10 items
-      first([1, 2, 3, 4, 5, 6, 7, 8, 9, 10].to_vec()),
-      Some(1)
-    );
+    // test with 10 items
+    let v: Vec<i32> = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    assert_eq!(first(v), Some(1));
   }
 
   #[bench]
   fn bench_first(b: &mut Bencher) {
     // benchmark with 10 items
-    b.iter(|| first([1, 2, 3, 4, 5, 6, 7, 8, 9, 10].to_vec()));
+    let v: Vec<i32> = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+    b.iter(|| first(v.clone()));
   }
 }

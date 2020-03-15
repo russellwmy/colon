@@ -19,12 +19,16 @@ mod tests {
 
   #[test]
   fn it_works() {
-    assert_eq!(mean(vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10]), 5.5);
+    let v = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+    assert_eq!(mean(v), 5.5);
   }
 
   #[bench]
   fn bench_mean(b: &mut Bencher) {
     // benchmark with 10 items
-    b.iter(|| mean(vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10]));
+    let v = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+    b.iter(|| mean(v.clone()));
   }
 }

@@ -15,12 +15,16 @@ mod tests {
 
   #[test]
   fn it_works() {
-    assert_eq!(sum(vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10]), 55.0);
+    let v = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+    assert_eq!(sum(v), 55.0);
   }
 
   #[bench]
   fn bench_sum(b: &mut Bencher) {
     // benchmark with 10 items
-    b.iter(|| sum(vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10]));
+    let v = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+    b.iter(|| sum(v.clone()));
   }
 }

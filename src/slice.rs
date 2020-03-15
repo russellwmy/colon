@@ -12,12 +12,16 @@ mod tests {
   #[test]
   fn it_works() {
     // test with 10 items
-    assert_eq!(slice(vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 1, 4), vec![2, 3, 4]);
+    let v = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+    assert_eq!(slice(v, 1, 4), vec![2, 3, 4]);
   }
 
   #[bench]
   fn bench_slice(b: &mut Bencher) {
     // benchmark with 10 items
-    b.iter(|| slice(vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 1, 4));
+    let v = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+    b.iter(|| slice(v.clone(), 1, 4));
   }
 }

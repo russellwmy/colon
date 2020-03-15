@@ -11,16 +11,17 @@ mod tests {
 
   #[test]
   fn it_works() {
-    assert_eq!(
-      // test with 10 items
-      flatten([vec![1, 2], vec![3, 4], vec![5, 6], vec![7, 8], vec![9, 10]].to_vec()).len(),
-      10
-    );
+    // test with 10 items
+    let v: Vec<Vec<i32>> = vec![vec![1, 2], vec![3, 4], vec![5, 6], vec![7, 8], vec![9, 10]];
+
+    assert_eq!(flatten(v.clone()).len(), 10);
   }
 
   #[bench]
   fn bench_flatten(b: &mut Bencher) {
     // benchmark with 10 items
-    b.iter(|| flatten([vec![1, 2], vec![3, 4], vec![5, 6], vec![7, 8], vec![9, 10]].to_vec()));
+    let v: Vec<Vec<i32>> = vec![vec![1, 2], vec![3, 4], vec![5, 6], vec![7, 8], vec![9, 10]];
+
+    b.iter(|| flatten(v.clone()));
   }
 }

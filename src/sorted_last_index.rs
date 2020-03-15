@@ -20,15 +20,16 @@ mod tests {
   #[test]
   fn it_works() {
     // test with 10 items
-    assert_eq!(
-      sorted_last_index(vec![1, 2, 3, 4, 4, 5, 6, 7, 8, 9, 10], 4),
-      5
-    );
+    let v = vec![1, 2, 3, 4, 4, 5, 6, 7, 8, 9, 10];
+
+    assert_eq!(sorted_last_index(v, 4), 5);
   }
 
   #[bench]
   fn bench_sorted_last_index(b: &mut Bencher) {
     // benchmark with 10 items
-    b.iter(|| sorted_last_index(vec![1, 2, 3, 4, 4, 5, 6, 7, 8, 9, 10], 4));
+    let v = vec![1, 2, 3, 4, 4, 5, 6, 7, 8, 9, 10];
+
+    b.iter(|| sorted_last_index(v.clone(), 4));
   }
 }

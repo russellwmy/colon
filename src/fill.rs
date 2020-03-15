@@ -11,16 +11,16 @@ mod tests {
 
   #[test]
   fn it_works() {
-    assert_eq!(
-      // test with 10 items
-      fill::<i32>([1; 10].to_vec(), 2),
-      [2; 10]
-    );
+    // test with 10 items
+    let v: Vec<i32> = [1; 10].to_vec();
+
+    assert_eq!(fill(v, 2), [2; 10]);
   }
 
   #[bench]
   fn bench_fill(b: &mut Bencher) {
+    let v: Vec<i32> = [1; 10].to_vec();
     // benchmark with 10 items
-    b.iter(|| fill::<i32>([1; 10].to_vec(), 2));
+    b.iter(|| fill(v.clone(), 2));
   }
 }

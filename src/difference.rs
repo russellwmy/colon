@@ -26,16 +26,16 @@ mod tests {
     // test with 10 duplicated items
     let v1 = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     let v2 = vec![2, 3, 4, 5, 6, 7, 8, 9, 10];
-    assert_eq!(difference::<i32>(v1, v2), vec![1]);
+    
+    assert_eq!(difference(v1, v2), vec![1]);
   }
 
   #[bench]
   fn bench_difference(b: &mut Bencher) {
     // brenchmark with 10 duplicated items
-    b.iter(|| {
-      let v1 = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-      let v2 = vec![2, 3, 4, 5, 6, 7, 8, 9, 10];
-      difference::<i32>(v1, v2)
-    });
+    let v1 = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    let v2 = vec![2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+    b.iter(|| difference(v1.clone(), v2.clone()));
   }
 }

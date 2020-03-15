@@ -12,16 +12,17 @@ mod tests {
 
   #[test]
   fn it_works() {
-    assert_eq!(
-      // test with 10 items
-      drop::<i32>([1; 10].to_vec(), 2).len(),
-      8
-    );
+    // test with 10 items
+    let v: Vec<i32> = [1; 10].to_vec();
+
+    assert_eq!(drop(v, 2).len(), 8);
   }
 
   #[bench]
   fn bench_drop(b: &mut Bencher) {
     // benchmark with 10 items
-    b.iter(||  drop::<i32>([1; 10].to_vec(), 2));
+    let v: Vec<i32> = [1; 10].to_vec();
+
+    b.iter(|| drop(v.clone(), 2));
   }
 }

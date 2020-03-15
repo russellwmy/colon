@@ -17,21 +17,18 @@ mod tests {
 
   #[test]
   fn it_works() {
-    assert_eq!(
-      // test with 10 items
-      nth([1, 2, 3, 4, 5, 6, 7, 8, 9, 10].to_vec(), 0),
-      Some(1)
-    );
-    assert_eq!(
-      // test with 10 items
-      nth([1, 2, 3, 4, 5, 6, 7, 8, 9, 10].to_vec(), -1),
-      Some(10)
-    );
+    // test with 10 items
+    let v = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+    assert_eq!(nth(v.clone(), 0), Some(1));
+    assert_eq!(nth(v.clone(), -1), Some(10));
   }
 
   #[bench]
   fn bench_nth(b: &mut Bencher) {
     // benchmark with 10 items
-    b.iter(|| nth([1, 2, 3, 4, 5, 6, 7, 8, 9, 10].to_vec(), 1));
+    let v = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+    b.iter(|| nth(v.clone(), 1));
   }
 }

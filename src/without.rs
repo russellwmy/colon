@@ -24,9 +24,8 @@ mod tests {
   #[bench]
   fn bench_without(b: &mut Bencher) {
     // benchmark with 10 items
-    b.iter(|| {
-      let v = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-      without(v, vec![2, 3, 4, 5, 6, 7, 8, 9, 10])
-    });
+    let v = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+    b.iter(|| without(v.clone(), vec![2, 3, 4, 5, 6, 7, 8, 9, 10]));
   }
 }

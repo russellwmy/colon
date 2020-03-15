@@ -14,28 +14,8 @@ mod tests {
 
   #[test]
   fn it_works() {
-    assert_eq!(
-      // test with 10 items
-      from_pairs(vec![
-        ("one", 1),
-        ("two", 2),
-        ("three", 3),
-        ("four", 4),
-        ("five", 5),
-        ("six", 6),
-        ("seven", 7),
-        ("eight", 8),
-        ("nine", 9),
-        ("ten", 10),
-       ]).is_empty(),
-      false
-    );
-  }
-
-  #[bench]
-  fn bench_from_pairs(b: &mut Bencher) {
-    // benchmark with 10 items
-    b.iter(|| from_pairs(vec![
+    // test with 10 items
+    let v = vec![
       ("one", 1),
       ("two", 2),
       ("three", 3),
@@ -46,6 +26,26 @@ mod tests {
       ("eight", 8),
       ("nine", 9),
       ("ten", 10),
-     ]));
+    ];
+    assert_eq!(from_pairs(v).is_empty(), false);
+  }
+
+  #[bench]
+  fn bench_from_pairs(b: &mut Bencher) {
+    // benchmark with 10 items
+    let v = vec![
+      ("one", 1),
+      ("two", 2),
+      ("three", 3),
+      ("four", 4),
+      ("five", 5),
+      ("six", 6),
+      ("seven", 7),
+      ("eight", 8),
+      ("nine", 9),
+      ("ten", 10),
+    ];
+
+    b.iter(|| from_pairs(v.clone()));
   }
 }

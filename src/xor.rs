@@ -1,21 +1,22 @@
 extern crate test;
-use std::cmp::Eq;
-use std::cmp::Ord;
-use std::cmp::PartialEq;
-use std::collections::HashSet;
-use std::hash::Hash;
-use std::iter::FromIterator;
 
-pub fn xor<T: Clone + Hash + PartialEq + Eq + Ord>(v1: Vec<T>, v2: Vec<T>) -> Vec<T> {
+use std::cmp::Eq;
+
+pub fn xor<T: Clone + Eq>(v1: Vec<T>, v2: Vec<T>) -> Vec<T> {
   // deduplicate v1 and v2
-  let a: HashSet<T> = HashSet::from_iter(v1.iter().cloned());
-  let b: HashSet<T> = HashSet::from_iter(v2.iter().cloned());
-  // collect xor from right to left
-  let mut l = a.difference(&b).map(|x| x.to_owned()).collect::<Vec<T>>();
-  // collect xor from left to rgith
-  let r = b.difference(&a).map(|x| x.to_owned()).collect::<Vec<T>>();
-  l.extend(r);
-  l
+  let mut a: Vec<T> = v1.clone();
+  let mut b: Vec<T> = v2.clone();
+
+  a.dedup();
+  b.dedup();
+
+  let mut c = a.clone();
+  c.extend(b.clone());
+
+  // collect difference from right to left
+  a.retain(|x| b.contains(x));
+  c.retain(|x| !a.contains(x));
+  c
 }
 
 #[cfg(test)]
@@ -38,7 +39,6 @@ mod tests {
     b.iter(|| {
       let v1 = vec![1, 2, 3, 4, 5, 6, 7, 8, 9];
       let v2 = vec![2, 3, 4, 5, 6, 7, 8, 9, 10];
-      
       xor::<i32>(v1, v2)
     });
   }

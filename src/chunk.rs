@@ -12,7 +12,8 @@ mod tests {
   #[test]
   fn it_works() {
     // test with 10 items
-    let chunks = chunk::<i32>((0..10).collect(), 2);
+    let v: Vec<i32> = vec![1, 2, 3, 4, 56, 7, 8, 9, 10];
+    let chunks = chunk(v, 2);
 
     assert_eq!(chunks.len(), 10 / 2);
   }
@@ -20,6 +21,8 @@ mod tests {
   #[bench]
   fn bench_chunk(b: &mut Bencher) {
     // benchmark with 10 items
-    b.iter(|| chunk::<i32>((0..10).collect(), 2));
+    let v: Vec<i32> = vec![1, 2, 3, 4, 56, 7, 8, 9, 10];
+
+    b.iter(|| chunk(v.clone(), 2));
   }
 }
